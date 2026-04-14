@@ -5,25 +5,31 @@
     <headerContent>
       <Select change="onChangeLanguage">
         <items>
-          <core:Item key="" text="EN"></core:Item>
-          <core:Item key="1" text="ES"></core:Item>
+          <core:Item key="en" text="{i18n>EN_SELECT}"></core:Item>
+          <core:Item key="es" text="{i18n>ES_SELECT}"></core:Item>
         </items>
       </Select>
     </headerContent>
     <content>
-    <Table items="{/Products}" class="sapUiTinyMargin myCustomTable" 
-           alternateRowColors="true" sticky="ColumnHeaders" autoPopinMode="false">
+    <VBox>
+     <Toolbar>
+       <Title text="{i18n>FILTER_TITLE}"></Title>
+       <ToolbarSpacer />
+       <SearchField id="idSearch" width="50%" placeholder="Search Products" liveChange="onSearch"></SearchField>
+     </Toolbar>
+    <Table id="idTable" items="{/Products}" class="sapUiTinyMargin myCustomTable" 
+           alternateRowColors="true" sticky="ColumnHeaders">
       <columns>
-        <Column><Text text="ProductID"></Text></Column>
-        <Column><Text text="ProductName"></Text></Column>
-        <Column><Text text="SupplierID"></Text></Column>
-        <Column><Text text="CategoryID"></Text></Column>
-        <Column><Text text="QuantityPerUnit"></Text></Column>
-        <Column><Text text="Price"></Text></Column>
-        <Column><Text text="UnitsInStock"></Text></Column>
-        <Column><Text text="UnitsOnOrder"></Text></Column>
-        <Column><Text text="ReorderLevel"></Text></Column>
-        <Column><Text text="Discontinued"></Text></Column>
+        <Column><Text text="{i18n>PRODUCTID_TXT}"></Text></Column>
+        <Column><Text text="{i18n>PROD_NAME_TXT}"></Text></Column>
+        <Column><Text text="{i18n>SUPP_ID_TXT}"></Text></Column>
+        <Column><Text text="{i18n>CATE_ID_TXT}"></Text></Column>
+        <Column><Text text="{i18n>QUANT_UNIT_TXT}"></Text></Column>
+        <Column><Text text="{i18>PRICE_TXT}"></Text></Column>
+        <Column><Text text="{i18n>UNIT_STOCK_TXT}"></Text></Column>
+        <Column><Text text="{i18n>UNIT_ORDER_TXT}"></Text></Column>
+        <Column><Text text="{i18n>RECORD_TXT}"></Text></Column>
+        <Column><Text text="{i18n>DISCONT_TXT}"></Text></Column>
 
       </columns>
       <items>
@@ -41,6 +47,7 @@
        </ColumnListItem>
       </items>
     </Table>
+    </VBox>
     </content>
     </Page>
 </mvc:View>
