@@ -1,6 +1,46 @@
-<mvc:View controllerName="com.excnorthwindproject.excnorthwindproject.controller.View1"
-    xmlns:mvc="sap.ui.core.mvc"
+<mvc:View xmlns:f="sap.f" controllerName="com.excnorthwindproject.excnorthwindproject.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core"
     xmlns="sap.m">
-    <Page id="page" title="{i18n>title}">
+    <Page id="page" title="{i18n>title}" class="myCustomPage">
+    <headerContent>
+      <Select change="onChangeLanguage">
+        <items>
+          <core:Item key="" text="EN"></core:Item>
+          <core:Item key="1" text="ES"></core:Item>
+        </items>
+      </Select>
+    </headerContent>
+    <content>
+    <Table items="{/Products}" class="sapUiTinyMargin myCustomTable" 
+           alternateRowColors="true" sticky="ColumnHeaders" autoPopinMode="false">
+      <columns>
+        <Column><Text text="ProductID"></Text></Column>
+        <Column><Text text="ProductName"></Text></Column>
+        <Column><Text text="SupplierID"></Text></Column>
+        <Column><Text text="CategoryID"></Text></Column>
+        <Column><Text text="QuantityPerUnit"></Text></Column>
+        <Column><Text text="Price"></Text></Column>
+        <Column><Text text="UnitsInStock"></Text></Column>
+        <Column><Text text="UnitsOnOrder"></Text></Column>
+        <Column><Text text="ReorderLevel"></Text></Column>
+        <Column><Text text="Discontinued"></Text></Column>
+
+      </columns>
+      <items>
+       <ColumnListItem>
+        <cells><Text text="{ProductID}"></Text></cells>
+        <cells><Text text="{ProductName}"></Text></cells>
+        <cells><Text text="{SupplierID}"></Text></cells>
+        <cells><Text text="{CategoryID}"></Text></cells>
+        <cells><Text text="{QuantityPerUnit}"></Text></cells>
+        <cells><Text text="{UnitPrice}"></Text></cells>
+        <cells><Text text="{UnitsInStock}"></Text></cells>
+        <cells><Text text="{UnitsOnOrder}"></Text></cells>
+        <cells><Text text="{ReorderLevel}"></Text></cells>
+        <cells><Text text="{Discontinued}"></Text></cells>
+       </ColumnListItem>
+      </items>
+    </Table>
+    </content>
     </Page>
 </mvc:View>

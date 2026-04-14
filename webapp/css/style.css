@@ -1,1 +1,7 @@
 /* Enter your custom styles here */
+.myCustomPage .sapMPageHeader {
+    background-color:cornflowerblue !important;
+}
+.myCustomTable .sapMTableTH {
+    background-color: bisque !important;
+}
