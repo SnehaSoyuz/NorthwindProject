@@ -1,7 +1,10 @@
 /* Enter your custom styles here */
-.myCustomPage .sapMPageHeader {
+.myCustomPage .sapFDynamicPageTitle {
     background-color:cornflowerblue !important;
 }
 .myCustomTable .sapMTableTH {
     background-color: bisque !important;
+}
+button[id$="btnFilters"] {
+    display: none !important;
 }

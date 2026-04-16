@@ -3,7 +3,7 @@ sap.ui.define([
 ], (BaseController) => {
   "use strict";
 
-  return BaseController.extend("com.excnorthwindproject.excnorthwindproject.controller.App", {
+  return BaseController.extend("com.excnorthwindproject.excnorthwindproject.controller.View2", {
       onInit() {
       }
   });

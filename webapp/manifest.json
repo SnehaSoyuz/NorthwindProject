@@ -89,17 +89,27 @@
       },
       "routes": [
         {
-          "name": "RouteView1",
+          "name": "Home",
           "pattern": ":?query:",
           "target": [
-            "TargetView1"
+            "Home"
           ]
+        },
+        {
+          "name": "SupplierDetail",
+          "pattern": "SupplierDetail",
+          "target":["SupplierDeatil"]
         }
+      
       ],
       "targets": {
-        "TargetView1": {
+        "Home": {
           "id": "View1",
           "name": "View1"
+        },
+        "SupplierDeatil":{
+          "id": "View2",
+          "name": "View2"
         }
       }
     },
