@@ -9,6 +9,8 @@
     <f:DynamicPage
         id="idDynamicPage"
         class="myCustomPage"
+        showFooter="true"
+        preserveHeaderStateOnScroll="true"
     >
         <f:title>
             <f:DynamicPageTitle>
@@ -94,7 +96,7 @@
                 itemPress="onItemSelect"
                 class="sapUiTinyMargin myCustomTable"
                 alternateRowColors="true"
-                sticky="ColumnHeaders"
+                sticky="ColumnHeaders,HeaderToolbar"
             >
                 <headerToolbar>
                     <Toolbar>
@@ -128,7 +130,7 @@
                         <Text text="{i18n>QUANT_UNIT_TXT}" />
                     </Column>
                     <Column>
-                        <Text text="{i18>PRICE_TXT}" />
+                        <Text text="{i18n>PRICE_TXT}" />
                     </Column>
                     <Column>
                         <Text text="{i18n>UNIT_STOCK_TXT}" />
@@ -144,7 +146,7 @@
                     </Column>
                 </columns>
                 <items>
-                    <ColumnListItem type="Active">
+                    <ColumnListItem type="Navigation">
                         <cells>
                             <Text text="{ProductID}" />
                             <Text text="{ProductName}" />
@@ -166,5 +168,23 @@
                 </items>
             </Table>
         </f:content>
+        <f:footer>
+            <OverflowToolbar>
+                <Text
+                    id="priceTotal"
+                    text="Price: 0"
+                />
+                <ToolbarSpacer />
+                <Text
+                    id="stockTotal"
+                    text="In Stock: 0"
+                />
+                <ToolbarSpacer />
+                <Text
+                    id="orderTotal"
+                    text="On Order: 0"
+                />
+            </OverflowToolbar>
+        </f:footer>
     </f:DynamicPage>
 </mvc:View>

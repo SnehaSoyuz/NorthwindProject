@@ -1,14 +1,15 @@
-sap.ui.define([
-
-], function(){
+sap.ui.define(["com/excnorthwindproject/excnorthwindproject/attributes/variable"
+], function (variable) {
 
     return {
-getStatusText: function (value) {
-    return value ? "Discontinued" : "Available";
-},        
+        getStatusText: function (value) {
+            variable.oResourceBundle = this.getView().getModel("i18n").getResourceBundle();
+            debugger;
+            return value ? variable.oResourceBundle.getText("DISCONT_TXT") : variable.oResourceBundle.getText("CONTINUE_TXT");
+        },
 
-getStatusState: function (value) {
-    return value ? "Error" : "Success";
-}
-}
+        getStatusState: function (value) {
+            return value ? "Error" : "Success";
+        }
+    }
 });

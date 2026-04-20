@@ -97,17 +97,18 @@
         },
         {
           "name": "SupplierDetail",
-          "pattern": "SupplierDetail",
-          "target":["SupplierDeatil"]
+          "pattern": "SupplierDetail/{SupplierID}",
+          "target": [
+            "SupplierDeatil"
+          ]
         }
-      
       ],
       "targets": {
         "Home": {
           "id": "View1",
           "name": "View1"
         },
-        "SupplierDeatil":{
+        "SupplierDeatil": {
           "id": "View2",
           "name": "View2"
         }
