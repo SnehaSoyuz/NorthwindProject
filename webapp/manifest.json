@@ -48,7 +48,8 @@
       "minUI5Version": "1.146.0",
       "libs": {
         "sap.m": {},
-        "sap.ui.core": {}
+        "sap.ui.core": {},
+        "sap.f": {}
       }
     },
     "contentDensities": {
@@ -66,6 +67,10 @@
         "dataSource": "mainService",
         "preload": true,
         "settings": {}
+      },
+      "layout":{
+        "type": "sap.ui.model.json.JSONModel",
+        "preload": true
       }
     },
     "resources": {
@@ -76,44 +81,43 @@
       ]
     },
     "routing": {
-      "config": {
-        "routerClass": "sap.m.routing.Router",
-        "controlAggregation": "pages",
-        "controlId": "app",
-        "transition": "slide",
-        "type": "View",
-        "viewType": "XML",
-        "path": "com.excnorthwindproject.excnorthwindproject.view",
-        "async": true,
-        "viewPath": "com.excnorthwindproject.excnorthwindproject.view"
-      },
-      "routes": [
-        {
-          "name": "Home",
-          "pattern": ":?query:",
-          "target": [
-            "Home"
-          ]
-        },
-        {
-          "name": "SupplierDetail",
-          "pattern": "SupplierDetail/{SupplierID}",
-          "target": [
-            "SupplierDeatil"
-          ]
-        }
-      ],
-      "targets": {
-        "Home": {
-          "id": "View1",
-          "name": "View1"
-        },
-        "SupplierDeatil": {
-          "id": "View2",
-          "name": "View2"
-        }
-      }
+  "config": {
+    "routerClass": "sap.f.routing.Router",
+    "viewType": "XML",
+    "viewPath": "com.excnorthwindproject.excnorthwindproject.view",
+    "controlId": "fcl",
+    "clearControlAggregation": true,
+    "async": true
+  },
+  "routes": [
+    {
+      "name": "Home",
+      "pattern": "",
+      "target": ["Master"]
     },
+    {
+      "name": "SupplierDetail",
+      "pattern": "SupplierDetail/{SupplierID}",
+      "target": ["Master", "Detail"]
+    }
+  ],
+  "targets": {
+    "Master": {
+      "viewName": "View1",
+      "viewType": "XML",
+      "controlAggregation": "beginColumnPages",
+      "viewId": "idView1",
+      "clearControlAggregation": false
+    },
+    "Detail": {
+      "viewName": "View2",
+      "viewId": "idView2",
+      "viewType": "XML",
+      "controlAggregation": "midColumnPages",
+      "clearControlAggregation": false
+    }
+  }
+},
     "rootView": {
       "viewName": "com.excnorthwindproject.excnorthwindproject.view.App",
       "type": "XML",

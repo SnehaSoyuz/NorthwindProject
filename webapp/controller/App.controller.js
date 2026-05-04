@@ -9,8 +9,8 @@ sap.ui.define([
       this.oDefaultModel = this.getOwnerComponent().getModel();
       this.oRouter = this.getOwnerComponent().getRouter();
       let oResourceBundle = this.getOwnerComponent().getModel("i18n");
-      debugger;
       variable.oResourceBundle = oResourceBundle.getResourceBundle();
+
     }
   });
 });

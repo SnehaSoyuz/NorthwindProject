@@ -7,13 +7,19 @@ sap.ui.define([
         onInit() {
             this.oRouter = this.getOwnerComponent().getRouter();
             this.oRouter.getRoute("SupplierDetail").attachMatched(this.herculis, this);
+
+            
         },
         herculis: function (oEvent) {
-            var suppId = oEvent.getParameter("arguments").SupplierID;
-            var sPath = '/' + suppId;
+            var supplierId = oEvent.getParameter("arguments").SupplierID;
+
+            var sPath = "/Products(" + supplierId + ")/Supplier";
+
             this.getView().bindElement({
-                path: sPath + "/Supplier"
+                path: sPath
             });
+            this.getView().getModel("layout").setProperty("/Layout",  "TwoColumnsMidExpanded")
         }
+
     });
 });

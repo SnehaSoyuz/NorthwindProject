@@ -15,16 +15,27 @@
             height: 100%;
         }
     </style>
-    <script id="sap-ui-bootstrap" src="resources/sap-ui-core.js" data-sap-ui-theme="sap_horizon"
-        data-sap-ui-resource-roots='{
+    <script id="sap-ui-bootstrap" src="https://ui5.sap.com/resources/sap-ui-core.js" data-sap-ui-theme="sap_horizon"
+        data-sap-ui-resourceroots='{
             "com.excnorthwindproject.excnorthwindproject": "./"
         }' data-sap-ui-on-init="module:sap/ui/core/ComponentSupport" data-sap-ui-compat-version="edge"
-        data-sap-ui-async="true" data-sap-ui-frame-options="trusted"></script>
+        data-sap-ui-async="true" data-sap-ui-preload="false" data-sap-ui-frame-options="trusted"></script>
 </head>
 
-<body class="sapUiBody sapUiSizeCompact" id="content">
-    <div data-sap-ui-component data-name="com.excnorthwindproject.excnorthwindproject" data-id="container"
-        data-settings='{"id" : "com.excnorthwindproject.excnorthwindproject"}' data-handle-validation="true"></div>
-</body>
+<body class="sapUiBody sapUiSizeCompact">
+    <div id="container"></div>
 
+    <script>
+        sap.ui.getCore().attachInit(function () {
+            sap.ui.core.Component.create({
+                name: "com.excnorthwindproject.excnorthwindproject"
+            }).then(function (oComponent) {
+                new sap.ui.core.ComponentContainer({
+                    component: oComponent,
+                    height: "100%"
+                }).placeAt("container");
+            });
+        });
+    </script>
+</body>
 </html>

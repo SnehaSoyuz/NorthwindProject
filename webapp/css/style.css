@@ -10,3 +10,12 @@
 button[id$="btnFilters"] {
     display: none !important;
 }
+
+.myCustomPage2 .sapMPageHeader{
+    background-color: cornflowerblue;
+}
+
+.myCustomPage2 .sapMTitle {
+    font-size: large;
+    font-weight: bolder;
+}

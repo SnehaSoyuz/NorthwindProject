@@ -3,6 +3,16 @@
     displayBlock="true"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m"
+    xmlns:f="sap.f"
 >
-    <App id="app" />
+ <App >
+  
+   <pages>
+     <f:FlexibleColumnLayout
+        id="fcl"
+        layout="{layout>/Layout}"
+    />
+   </pages>
+ </App>
+    
 </mvc:View>

@@ -74,9 +74,9 @@
                                     name="CategoryID"
                                     selectionChange=".onSelectionChange"
                                     items="{
-												path: '/Categories',
-												templateShareable: false
-											}"
+                                      path: '/Categories',
+                                      templateShareable: false
+                                    }"
                                 >
                                     <core:Item
                                         key="{CategoryID}"
@@ -93,10 +93,10 @@
             <Table
                 id="idTable"
                 items="{/Products}"
-                itemPress="onItemSelect"
                 class="sapUiTinyMargin myCustomTable"
                 alternateRowColors="true"
                 sticky="ColumnHeaders,HeaderToolbar"
+                updateFinished="calculateTotal"
             >
                 <headerToolbar>
                     <Toolbar>
@@ -146,7 +146,7 @@
                     </Column>
                 </columns>
                 <items>
-                    <ColumnListItem type="Navigation">
+                    <ColumnListItem type="Navigation" press="onItemSelect">
                         <cells>
                             <Text text="{ProductID}" />
                             <Text text="{ProductName}" />

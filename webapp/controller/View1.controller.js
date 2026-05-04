@@ -10,10 +10,15 @@ sap.ui.define([
     return BaseController.extend("com.excnorthwindproject.excnorthwindproject.controller.View1", {
         onInit() {
             this.oRouter = this.getOwnerComponent().getRouter();
-            var oTable = this.byId("idTable");
-            oTable.attachUpdateFinished(this.calculateTotal, this);
+            // var oTable = this.byId("idTable");
+            // oTable.attachUpdateFinished(this.calculateTotal, this);
+            this.oRouter.getRoute("Home").attachMatched(this.HomeRmh, this);
         },
 
+        HomeRmh: function(oEvent){
+          let oLayoutModel = this.getView().getModel("layout");
+          oLayoutModel.setProperty("/Layout", "OneColumn");
+        },
         onSearch: function (oEvent) {
             var sVal = oEvent.getParameter("newValue");
             var oFilter1 = new Filter("ProductName", FilterOperator.Contains, sVal);
@@ -52,19 +57,21 @@ sap.ui.define([
         onItemSelect: function (oEvent) {
             debugger;
 
-            var oItem = oEvent.getParameter("listItem"); // correct for sap.m.Table
+            var oItem = oEvent.getSource(); // correct for sap.m.Table
             var oContext = oItem.getBindingContext();
 
             var sSupplierID = oContext.getProperty("SupplierID");
+            let oLayoutModel = this.getView().getModel("layout");
+       
 
             this.oRouter.navTo("SupplierDetail", {
-                SupplierID: encodeURIComponent(sSupplierID)
+                SupplierID: sSupplierID
             });
         },
         onFilter: function (oEvent) {
             let oFilter1,
                 oFilter2;
-            debugger;
+
             let aFilterControl = oEvent.getParameter("selectionSet");
             let aControlObjects = aFilterControl.map((oControl) => {
                 debugger;

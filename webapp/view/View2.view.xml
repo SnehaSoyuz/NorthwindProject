@@ -2,13 +2,26 @@
     xmlns:f="sap.f"
     controllerName="com.excnorthwindproject.excnorthwindproject.controller.View2"
     xmlns:mvc="sap.ui.core.mvc"
-    xmlns:core="sap.ui.core"
     xmlns="sap.m"
+    xmlns:form="sap.ui.layout.form"
 >
-    <Page title="Supplier data" />
-    <VBox>
-        <Text text="{CompanyName}" />
-        <Text text="{ContactName}" />
-        <Text text="{City}" />
-    </VBox>
+    <Page
+     class= "myCustomPage2"
+     title="Supplier Data">
+        <form:SimpleForm>
+            <form:content>
+                <Label text="Company Name" />
+                <Text
+                    text="{CompanyName}"
+                    id="idTextCompanyName"
+                />
+                <Label text="Contact Name" />
+                <Text text="{ContactName}" />
+                <Label text="Country"/>
+                <Text text="{Country}"/>
+                <Label text="City" />
+                <Text text="{City}" />
+            </form:content>
+        </form:SimpleForm>
+    </Page>
 </mvc:View>

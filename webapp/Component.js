@@ -7,9 +7,6 @@ sap.ui.define([
     return UIComponent.extend("com.excnorthwindproject.excnorthwindproject.Component", {
         metadata: {
             manifest: "json",
-            interfaces: [
-                "sap.ui.core.IAsyncContentCreation"
-            ]
         },
 
         init() {
@@ -21,6 +18,7 @@ sap.ui.define([
 
             // enable routing
             this.getRouter().initialize();
+            this.getRouter().navTo("Home");
         }
     });
 });
