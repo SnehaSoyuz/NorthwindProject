@@ -1,4 +1,4 @@
-<mvc:View
+<mvc:View xmlns:cards="sap.f.cards"
     xmlns:f="sap.f"
     controllerName="com.excnorthwindproject.excnorthwindproject.controller.View2"
     xmlns:mvc="sap.ui.core.mvc"
@@ -7,7 +7,10 @@
 >
     <Page
      class= "myCustomPage2"
-     title="Supplier Data">
+     title="Supplier Data" showNavButton="true" navButtonPress="onBack">
+     <headerContent>
+     <Button icon="sap-icon://full-screen" press="onFullScreen"></Button>
+     </headerContent>
         <form:SimpleForm>
             <form:content>
                 <Label text="Company Name" />

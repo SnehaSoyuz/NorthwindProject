@@ -15,24 +15,57 @@ sap.ui.define([
             this.oRouter.getRoute("Home").attachMatched(this.HomeRmh, this);
         },
 
-        HomeRmh: function(oEvent){
-          let oLayoutModel = this.getView().getModel("layout");
-          oLayoutModel.setProperty("/Layout", "OneColumn");
+        HomeRmh: function (oEvent) {
+            let oLayoutModel = this.getView().getModel("layout");
+            oLayoutModel.setProperty("/Layout", "OneColumn");
         },
+        // onSearch: function (oEvent) {
+        //     var sVal = oEvent.getParameter("newValue");
+        //     var oFilter1 = new Filter("ProductName", FilterOperator.Contains, sVal);
+        //     var oFilter2 = new Filter("QuantityPerUnit", FilterOperator.Contains, sVal);
+        //     var oFilter3 = new Filter("CategoryID", FilterOperator.EQ, Number(sVal));
+        //     var aFilter = [oFilter1, oFilter2, oFilter3];
+        //     var aFilters = new Filter({
+        //         filters: aFilter,
+        //         and: false
+        //     })
+
+        //     this.getView().byId("idTable").getBinding("items").filter(aFilters);
+        // },
         onSearch: function (oEvent) {
             var sVal = oEvent.getParameter("newValue");
-            var oFilter1 = new Filter("ProductName", FilterOperator.Contains, sVal);
-            var oFilter2 = new Filter("QuantityPerUnit", FilterOperator.Contains, sVal);
-            var oFilter3 = new Filter("CategoryID", FilterOperator.EQ, Number(sVal));
-            var aFilter = [oFilter1, oFilter2, oFilter3];
-            var aFilters = new Filter({
-                filters: aFilter,
+            var oTable = this.byId("idTable");
+            var oBinding = oTable.getBinding("items");
+
+            var aFilters = [];
+            if (!sVal) {
+                    oBinding.filter([]);
+                    return;
+                }
+            
+            if (sVal) {
+                aFilters.push(
+                    new Filter("ProductName", FilterOperator.Contains, sVal)
+                );
+
+                aFilters.push(
+                    new Filter("QuantityPerUnit", FilterOperator.Contains, sVal)
+                );
+            }
+            var iVal = Number(sVal);
+            if (!isNaN(iVal)) {
+                aFilters.push(
+                    new Filter("CategoryID", FilterOperator.EQ, iVal)
+                );
+            }
+            
+            var oFilter = new Filter({
+                filters: aFilters,
                 and: false
-            })
+            });
 
-            this.getView().byId("idTable").getBinding("items").filter(aFilters);
+            oBinding.filter(oFilter);
         },
-
         onChangeLanguage: function (oEvent) {
             var sLang = oEvent.getSource().getSelectedKey(); // "en" or "es"a
 
@@ -62,7 +95,7 @@ sap.ui.define([
 
             var sSupplierID = oContext.getProperty("SupplierID");
             let oLayoutModel = this.getView().getModel("layout");
-       
+
 
             this.oRouter.navTo("SupplierDetail", {
                 SupplierID: sSupplierID
